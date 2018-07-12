@@ -1,24 +1,24 @@
 <template>
-<div class="col-full">
-  <h1>Not found</h1>
-  <p>404 not found</p>
+<div class="col-full" :class="$style['centered']">
+  <h1 :class="$style['heading-large']">Not found</h1>
+  <p :class="$style['text-large']">404 not found</p>
   <router-link :to="{name: 'Home'}">
     Home
   </router-link>
 </div>
 </template>
 
-<style scoped>
-h1 {
+<style module>
+.heading-large {
   font-size: 100px;
 }
 
-p {
+.text-large {
   font-size: 50px;
   font-weight: 100;
 }
 
-div {
+.centered {
   text-align: center;
 }
 </style>
