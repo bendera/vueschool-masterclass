@@ -23,7 +23,7 @@ import sourceData from '@/data.json';
 
 export default {
   props: {
-    posts: {
+    post: {
       required: true,
       type: Object,
     },
