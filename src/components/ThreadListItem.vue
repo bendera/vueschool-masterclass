@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import sourceData from '@/data.json';
-
 export default {
   props: {
     thread: {
@@ -45,7 +43,7 @@ export default {
       return Object.keys(this.thread.posts).length - 1;
     },
     user() {
-      return sourceData.users[this.thread.userId];
+      return this.$store.state.users[this.thread.userId];
     },
   },
 };
