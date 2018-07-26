@@ -5,7 +5,7 @@
     <a href="profile.html#profile-details">
       <img class="avatar-large" :src="user.avatar" alt="">
     </a>
-    <p class="desktop-only text-small">107 posts</p>
+    <p class="desktop-only text-small">{{ userPostsCount }} posts</p>
   </div>
   <div class="post-content">
     <div>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { countObjectProperties } from '@/utils';
+
 export default {
   props: {
     post: {
@@ -29,7 +31,7 @@ export default {
       return this.$store.state.users[this.post.userId];
     },
     userPostsCount() {
-      return Object.keys(this.user.postIds).length;
+      return countObjectProperties(this.user.posts);
     },
   },
 };
