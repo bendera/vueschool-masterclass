@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/pages/PageHome';
 import ThreadShow from '@/pages/PageThreadShow';
 import Category from '@/pages/PageCategory';
+import Profile from '@/pages/PageProfile';
 import Forum from '@/pages/PageForum';
 import NotFound from '@/pages/PageNotFound';
 
@@ -31,6 +32,12 @@ export default new Router({
       path: '/thread/:id',
       name: 'ThreadShow',
       component: ThreadShow,
+      props: true,
+    },
+    {
+      path: '/me',
+      name: 'Profile',
+      component: Profile,
       props: true,
     },
     {

@@ -19,25 +19,27 @@
   <nav class="navbar">
     <ul>
 
-        <li class="navbar-user">
-            <a href="#">
-                <img class="avatar-small" :src="user.avatar" alt="">
-                <span>
-                    {{ user.name }}
-                    <img class="icon-profile" src="../assets/img/svg/arrow-profile.svg" alt="">
-                </span>
-            </a>
+      <li class="navbar-user">
+        <router-link
+          :to="{ name: 'Profile' }"
+        >
+          <img class="avatar-small" :src="user.avatar" alt="">
+          <span>
+              {{ user.name }}
+              <img class="icon-profile" src="../assets/img/svg/arrow-profile.svg" alt="">
+          </span>
+        </router-link>
 
-            <!-- dropdown menu -->
-            <!-- add class "active-drop" to show the dropdown -->
-            <div id="user-dropdown">
-                <div class="triangle-drop"></div>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-menu-item"><a href="profile.html">View profile</a></li>
-                    <li class="dropdown-menu-item"><a href="#">Log out</a></li>
-                </ul>
-            </div>
-        </li>
+        <!-- dropdown menu -->
+        <!-- add class "active-drop" to show the dropdown -->
+        <div id="user-dropdown">
+            <div class="triangle-drop"></div>
+            <ul class="dropdown-menu">
+                <li class="dropdown-menu-item"><a href="profile.html">View profile</a></li>
+                <li class="dropdown-menu-item"><a href="#">Log out</a></li>
+            </ul>
+        </div>
+      </li>
     </ul>
 
     <ul>
