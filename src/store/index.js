@@ -80,7 +80,7 @@ export default new Vuex.Store({
       Vue.set(user.posts, postId, postId);
     },
     appendThreadToForum(state, { forumId, threadId }) {
-      const forum = state.threads[forumId];
+      const forum = state.forums[forumId];
 
       if (!forum.threads) {
         Vue.set(forum, 'threads', {});
