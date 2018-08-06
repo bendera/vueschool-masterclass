@@ -38,12 +38,12 @@ export default {
         title,
         text,
       })
-        .then((thread) => {
-          this.$router.push({ name: 'ThreadShow', params: { id: thread['.key'] } });
+        .then(() => {
+          this.$router.push({ name: 'ThreadShow', params: { id: this.id } });
         });
     },
     cancel() {
-      this.$router.push({ name: 'Forum', params: { id: this.forum['.key'] } });
+      this.$router.push({ name: 'ThreadShow', params: { id: this.id } });
     },
   },
 };
