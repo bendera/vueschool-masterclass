@@ -1,5 +1,5 @@
 <template>
-<form @submit.prevent="save">
+<form @submit.prevent="save" class="post-editor">
   <div class="form-group">
     <textarea
       name=""
@@ -20,16 +20,30 @@
 export default {
   props: {
     threadId: {
-      required: true,
+      required: false,
+    },
+    post: {
+      type: Object,
     },
   },
   data() {
     return {
-      text: '',
+      text: this.post ? this.post.text : '',
     };
+  },
+  computed: {
+    isUpdate() {
+      return !!this.post;
+    },
   },
   methods: {
     save() {
+      this.persist()
+        .then((post) => {
+          this.$emit('save', { post });
+        });
+    },
+    create() {
       const post = {
         text: this.text,
         threadId: this.threadId,
@@ -38,6 +52,23 @@ export default {
       this.text = '';
       this.$store.dispatch('createPost', post);
     },
+    update() {
+      const payload = {
+        id: this.post['.key'],
+        text: this.text,
+      };
+
+      this.$store.dispatch('updatePost', payload);
+    },
+    persist() {
+      return this.isUpdate ? this.update() : this.create();
+    },
   },
 };
 </script>
+<style>
+.post-editor {
+  width: 100%;
+}
+</style>
+
