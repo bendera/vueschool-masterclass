@@ -10,6 +10,7 @@
   <div class="post-content">
     <template v-if="!editing">
       {{ post.text }}
+      <a href="#" @click.prevent="editing = true" style="margin-left: auto;" class="link-unstyled" title="Make a change"><i class="fa fa-pencil"></i></a>
     </template>
     <template v-else>
       <PostEditor
