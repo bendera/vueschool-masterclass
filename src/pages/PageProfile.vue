@@ -2,11 +2,11 @@
 <div class="flex-grid">
   <UserProfileCard
     v-if="!edit"
-    v-bind="{ user, userPostsCount, userThreadsCount }"
+    v-bind="{ user }"
   />
   <UserProfileCardEditor
     v-else
-    v-bind="{ user, userPostsCount, userThreadsCount }"
+    v-bind="{ user }"
   />
   <div class="col-7 push-top">
 
@@ -26,7 +26,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { countObjectProperties } from '@/utils';
 import PostList from '@/components/PostList';
 import UserProfileCard from '@/components/UserProfileCard';
 import UserProfileCardEditor from '@/components/UserProfileCardEditor';
@@ -47,12 +46,6 @@ export default {
     ...mapGetters({
       user: 'authUser',
     }),
-    userThreadsCount() {
-      return countObjectProperties(this.user.threads);
-    },
-    userPostsCount() {
-      return countObjectProperties(this.user.posts);
-    },
     userPosts() {
       if (this.user.posts) {
         return Object.values(this.$store.state.posts)
