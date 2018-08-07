@@ -25,6 +25,23 @@ export default {
     },
     post: {
       type: Object,
+      validator: (obj) => {
+        const keyIsValid = typeof obj['.key'] === 'string';
+        const textIsValid = typeof obj.text === 'string';
+        const valid = keyIsValid && textIsValid;
+
+        if (!textIsValid) {
+          // eslint-disable-next-line no-console
+          console.error('😳 The post prop object must include a `text` attribute.');
+        }
+
+        if (!keyIsValid) {
+          // eslint-disable-next-line no-console
+          console.error('😳 The post prop object must include a `.key` attribute.');
+        }
+
+        return valid;
+      },
     },
   },
   data() {
